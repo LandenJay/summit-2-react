@@ -37,21 +37,22 @@ export default function Services() {
 
           gsap.fromTo(
             cards,
-            { y: 60, opacity: 0 },
+           { y: 30, opacity: 0 },
             {
               y: 0,
               opacity: 1,
-              duration: 0.8,
+              duration: 0.55,
               stagger: 0.12,
               ease: "power3.out",
-              delay: 0.2,
             }
           );
 
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.1,
+        rootMargin: "0px 0px 250px 0px",
+      }
     );
 
     observer.observe(section);

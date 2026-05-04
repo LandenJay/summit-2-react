@@ -59,22 +59,22 @@ export default function Projects() {
 
           gsap.fromTo(
             cards,
-            { y: 70, opacity: 0, scale: 0.96 },
+            { y: 30, opacity: 0, scale: 0.98 },
             {
               y: 0,
               opacity: 1,
-              scale: 1,
-              duration: 0.85,
-              stagger: 0.14,
+              duration: 0.55,
+              stagger: 0.12,
               ease: "power3.out",
-              delay: 0.2,
             }
           );
 
           observer.disconnect();
         }
       },
-      { threshold: 0.18 }
+      { threshold: 0.1,
+        rootMargin: "0px 0px 250px 0px",
+      }
     );
 
     observer.observe(section);

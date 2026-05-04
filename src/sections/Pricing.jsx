@@ -57,11 +57,11 @@ export default function Pricing() {
         if (entry.isIntersecting) {
           gsap.fromTo(
             items,
-            { y: 55, opacity: 0 },
+            { y: 30, opacity: 0 },
             {
               y: 0,
               opacity: 1,
-              duration: 0.85,
+              duration: 0.55,
               stagger: 0.12,
               ease: "power3.out",
             }
@@ -70,7 +70,9 @@ export default function Pricing() {
           observer.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.1,
+        rootMargin: "0px 0px 250px 0px",
+      }
     );
 
     observer.observe(section);
