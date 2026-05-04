@@ -46,18 +46,19 @@ export default function Contact() {
       <div className="absolute bottom-[-180px] right-[-160px] h-[420px] w-[420px] rounded-full bg-[#168DFF]/15 blur-[120px]" />
 
       <div className="relative mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        {/* LEFT SIDE */}
         <div>
           <p className="contact-animate font-black uppercase tracking-[0.35em] text-[#168DFF]">
             Start Your Project
           </p>
 
           <h2 className="contact-animate mt-5 text-4xl font-black leading-tight md:text-6xl">
-            Ready to make your business look impossible to ignore?
+            Ready to make your business impossible to ignore?
           </h2>
 
           <p className="contact-animate mt-6 max-w-xl text-lg leading-8 text-white/70">
             Tell us what you need built, improved, or marketed. We’ll review
-            your message and help point your business in the right direction.
+            your project and point you in the right direction.
           </p>
 
           <div className="contact-animate mt-10 grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
@@ -81,18 +82,26 @@ export default function Contact() {
               Free Website Audit
             </h3>
             <p className="mt-3 leading-7 text-white/70">
-              Not sure what your site needs? Send your business info and we can
-              review your online presence for quick-win improvements.
+              Send us your business info and we’ll review quick-win
+              improvements for your online presence.
             </p>
           </div>
         </div>
 
+        {/* FORM */}
         <form
           name="contact"
           method="POST"
+          action="/success.html"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
           className="contact-animate rounded-[2rem] border border-white/10 bg-white/[0.08] p-6 shadow-[0_30px_100px_rgba(0,0,0,0.35)] backdrop-blur-2xl md:p-8"
         >
           <input type="hidden" name="form-name" value="contact" />
+
+          <p hidden>
+            <input name="bot-field" />
+          </p>
 
           <div className="grid gap-5 md:grid-cols-2">
             <div>
@@ -100,11 +109,11 @@ export default function Contact() {
                 Name
               </label>
               <input
-                name="name"
                 type="text"
+                name="name"
                 required
                 placeholder="Your name"
-                className="w-full rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none transition placeholder:text-white/35 focus:border-[#168DFF]"
+                className="w-full rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none placeholder:text-white/35 focus:border-[#168DFF]"
               />
             </div>
 
@@ -113,11 +122,11 @@ export default function Contact() {
                 Email
               </label>
               <input
-                name="email"
                 type="email"
+                name="email"
                 required
                 placeholder="you@example.com"
-                className="w-full rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none transition placeholder:text-white/35 focus:border-[#168DFF]"
+                className="w-full rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none placeholder:text-white/35 focus:border-[#168DFF]"
               />
             </div>
 
@@ -126,10 +135,10 @@ export default function Contact() {
                 Business
               </label>
               <input
-                name="business"
                 type="text"
+                name="business"
                 placeholder="Business name"
-                className="w-full rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none transition placeholder:text-white/35 focus:border-[#168DFF]"
+                className="w-full rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none placeholder:text-white/35 focus:border-[#168DFF]"
               />
             </div>
 
@@ -140,17 +149,17 @@ export default function Contact() {
               <select
                 name="service"
                 required
-                className="w-full rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none transition focus:border-[#168DFF]"
+                className="w-full rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none focus:border-[#168DFF]"
               >
-                <option className="text-[#06162B]" value="">
-                  What do you need?
+                <option value="" className="text-black">
+                  Select one
                 </option>
-                <option className="text-[#06162B]">Website Design</option>
-                <option className="text-[#06162B]">Landing Page</option>
-                <option className="text-[#06162B]">Local SEO</option>
-                <option className="text-[#06162B]">Branding</option>
-                <option className="text-[#06162B]">Lead Funnel</option>
-                <option className="text-[#06162B]">Custom Project</option>
+                <option className="text-black">Website Design</option>
+                <option className="text-black">Website Redesign</option>
+                <option className="text-black">SEO</option>
+                <option className="text-black">Branding</option>
+                <option className="text-black">Marketing</option>
+                <option className="text-black">Custom Project</option>
               </select>
             </div>
 
@@ -159,11 +168,11 @@ export default function Contact() {
                 Message
               </label>
               <textarea
+                rows="6"
                 name="message"
                 required
-                rows="6"
-                placeholder="Tell us about your business and what you need help with..."
-                className="w-full resize-none rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none transition placeholder:text-white/35 focus:border-[#168DFF]"
+                placeholder="Tell us about your project..."
+                className="w-full resize-none rounded-xl border border-white/10 bg-white/10 px-4 py-4 text-white outline-none placeholder:text-white/35 focus:border-[#168DFF]"
               />
             </div>
           </div>
@@ -176,7 +185,7 @@ export default function Contact() {
           </button>
 
           <p className="mt-5 text-center text-sm text-white/50">
-            We’ll never spam you. Just clear communication about your project.
+            We’ll never spam you. Just project communication.
           </p>
         </form>
       </div>
