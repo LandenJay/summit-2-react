@@ -18,7 +18,7 @@ const projects = [
   },
   {
     tag: "Landing Page + Payments",
-    title: "Doula Service Website",
+    title: "Overall Birth Doula",
     text: "A modern landing page with clear package messaging and Stripe checkout integration.",
     gradient: "from-[#168DFF] to-purple-500",
     features: ["Stripe checkout", "Package offer", "Clean CTA"],
