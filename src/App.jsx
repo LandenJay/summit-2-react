@@ -12,6 +12,7 @@ import MouseGlow from "./components/MouseGlow";
 import Pricing from "./sections/Pricing";
 import Testimonials from "./sections/Testimonials";
 import DeviceShowcase from "./components/DeviceShowcase";
+import FAQ from "./sections/FAQ";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -31,6 +32,7 @@ export default function App() {
       <Projects />
       <Testimonials />
       <Pricing />
+      <FAQ />
       <Contact />
       <Footer />
     </main>
