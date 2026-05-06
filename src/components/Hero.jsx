@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import MagneticButton from "./MagneticButton";
 
 export default function Hero() {
   const heroRef = useRef(null);
@@ -143,19 +144,13 @@ export default function Hero() {
         </p>
 
         <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
-          <a
-            href="#contact"
-            className="hero-btn rounded-xl bg-[#168DFF] px-8 py-4 font-black shadow-[0_20px_70px_rgba(22,141,255,0.42)] transition duration-300 hover:-translate-y-1 hover:bg-blue-500"
-          >
-            Start Your Project →
-          </a>
+          <MagneticButton href="#contact">
+              Start Your Project →
+          </MagneticButton>
 
-          <a
-            href="#projects"
-            className="hero-btn rounded-xl border border-white/25 bg-white/10 px-8 py-4 font-black backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:bg-white/20"
-          >
-            View Work
-          </a>
+          <MagneticButton href="#projects" variant="secondary">
+             View Work
+         </MagneticButton>
         </div>
       </div>
 

@@ -11,6 +11,7 @@ import SmoothScroll from "./components/SmoothScroll";
 import MouseGlow from "./components/MouseGlow";
 import Pricing from "./sections/Pricing";
 import Testimonials from "./sections/Testimonials";
+import DeviceShowcase from "./components/DeviceShowcase";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -25,6 +26,7 @@ export default function App() {
       <MouseGlow />
       <Navbar />
       <Hero />
+      <DeviceShowcase />
       <Services />
       <Projects />
       <Testimonials />
