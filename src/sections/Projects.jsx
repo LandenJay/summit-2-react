@@ -1,70 +1,67 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
 const projects = [
   {
-    tag: "HVAC Website",
-    title: "J&L Climate Co.",
-    text: "A clean service-business website with strong calls to action, lead forms, and appointment request flow.",
-    gradient: "from-blue-500 to-cyan-400",
-    features: ["Service pages", "Lead form", "Mobile layout"],
-  },
-  {
-    tag: "Painting Website",
-    title: "Olds West Painting",
-    text: "A professional local painting website focused on trust, service clarity, and customer inquiries.",
-    gradient: "from-sky-500 to-indigo-500",
-    features: ["Brand polish", "Service areas", "Inquiry form"],
-  },
-  {
-    tag: "Landing Page + Payments",
-    title: "Overall Birth Doula",
-    text: "A modern landing page with clear package messaging and Stripe checkout integration.",
-    gradient: "from-[#168DFF] to-purple-500",
-    features: ["Stripe checkout", "Package offer", "Clean CTA"],
-  },
-  {
-    tag: "Agency Brand",
     title: "Summit Web Co.",
-    text: "A premium website and brand system built for websites, marketing, and local business growth.",
-    gradient: "from-cyan-400 to-[#168DFF]",
-    features: ["Branding", "Funnels", "Automation"],
+    short: "Summit",
+    type: "Agency Website",
+    url: "https://summitwebcompany.com",
+    description:
+      "Premium React website with animations, lead capture, SEO, and smooth scroll.",
+    tags: ["React", "SEO", "Lead Capture"],
+  },
+  {
+    title: "J&L Climate Co.",
+    short: "HVAC",
+    type: "HVAC Website",
+    url: "https://jnlclimatecompany.com",
+    description:
+      "Service-business website focused on trust, calls, and appointment requests.",
+    tags: ["Local Service", "Booking", "Trust"],
+  },
+  {
+    title: "Olds West Painting",
+    short: "Painting",
+    type: "Painting Website",
+    url: "https://oldswestpainting.com",
+    description:
+      "Local painting website built around clean branding and quote requests.",
+    tags: ["Branding", "Quotes", "Mobile"],
+  },
+  {
+    title: "Doula Service Site",
+    short: "Doula",
+    type: "Landing Page",
+    url: "https://overallbirth.com",
+    description:
+      "Landing page with package messaging, payment flow, and contact system.",
+    tags: ["Landing Page", "Payments", "CTA"],
   },
 ];
 
 export default function Projects() {
   const sectionRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeProject = projects[activeIndex];
 
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
 
-    const headerItems = section.querySelectorAll(".projects-header > *");
-    const cards = section.querySelectorAll(".project-card");
+    const items = section.querySelectorAll(".project-animate");
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           gsap.fromTo(
-            headerItems,
-            { y: 35, opacity: 0 },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 0.8,
-              stagger: 0.12,
-              ease: "power3.out",
-            }
-          );
-
-          gsap.fromTo(
-            cards,
-            { y: 30, opacity: 0, scale: 0.98 },
+            items,
+            { y: 30, opacity: 0 },
             {
               y: 0,
               opacity: 1,
               duration: 0.55,
-              stagger: 0.12,
+              stagger: 0.08,
               ease: "power3.out",
             }
           );
@@ -72,7 +69,8 @@ export default function Projects() {
           observer.disconnect();
         }
       },
-      { threshold: 0.1,
+      {
+        threshold: 0.01,
         rootMargin: "0px 0px 250px 0px",
       }
     );
@@ -86,115 +84,174 @@ export default function Projects() {
     <section
       ref={sectionRef}
       id="projects"
-      className="relative overflow-hidden bg-[#EEF7FF] px-6 py-28 text-[#06162B]"
+      className="relative overflow-hidden bg-[#EEF7FF] px-6 py-24 text-[#06162B]"
     >
-      <div className="absolute left-[-200px] top-[-120px] h-[420px] w-[420px] rounded-full bg-[#168DFF]/15 blur-[110px]" />
-      <div className="absolute bottom-[-160px] right-[-160px] h-[440px] w-[440px] rounded-full bg-[#168DFF]/10 blur-[110px]" />
+      <div className="absolute left-[-180px] top-[-160px] h-[440px] w-[440px] rounded-full bg-[#168DFF]/10 blur-[120px]" />
+      <div className="absolute bottom-[-180px] right-[-160px] h-[440px] w-[440px] rounded-full bg-[#168DFF]/10 blur-[120px]" />
 
-      <div className="relative mx-auto max-w-7xl">
-        <div className="projects-header mx-auto max-w-3xl text-center">
+      <div className="relative mx-auto max-w-[1700px]">
+        <div className="project-animate mx-auto max-w-3xl text-center">
           <p className="font-black uppercase tracking-[0.35em] text-[#168DFF]">
-            Recent Work
+            Selected Work
           </p>
 
           <h2 className="mt-5 text-4xl font-black leading-tight md:text-6xl">
-            Projects Built To Look Sharp And Convert
+            Preview Real Projects
           </h2>
 
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-            A few examples of website, branding, and business systems built
-            around clarity, trust, and lead generation.
+            A cleaner project showcase with live desktop previews on larger
+            screens and simple project cards on mobile.
           </p>
         </div>
 
-        <div className="mt-16 grid gap-8 lg:grid-cols-2">
+        {/* DESKTOP TABBED LIVE PREVIEW */}
+        <div className="project-animate mt-14 hidden lg:block">
+          <div className="overflow-hidden rounded-[2rem] border border-white bg-white shadow-[0_35px_110px_rgba(6,22,43,0.14)]">
+            {/* Fake Browser Top */}
+            <div className="flex items-center gap-4 border-b border-slate-200 bg-[#06162B] px-5 py-4">
+              <div className="flex items-center gap-2">
+                <span className="h-3 w-3 rounded-full bg-red-400" />
+                <span className="h-3 w-3 rounded-full bg-yellow-400" />
+                <span className="h-3 w-3 rounded-full bg-green-400" />
+              </div>
+
+              <div className="flex min-w-0 flex-1 items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs text-white/55">
+                <span className="text-[#168DFF]">●</span>
+                <span className="truncate">{activeProject.url}</span>
+              </div>
+
+              <a
+                href={activeProject.url}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-xl bg-[#168DFF] px-5 py-3 text-sm font-black text-white transition hover:bg-blue-500"
+              >
+                Open Site →
+              </a>
+            </div>
+
+            {/* Browser Tabs */}
+            <div className="flex border-b border-slate-200 bg-white px-4 pt-4">
+              {projects.map((project, index) => {
+                const active = activeIndex === index;
+
+                return (
+                  <button
+                    key={project.title}
+                    onClick={() => setActiveIndex(index)}
+                    className={`relative rounded-t-2xl px-6 py-4 text-left transition ${
+                      active
+                        ? "bg-[#EEF7FF] text-[#06162B]"
+                        : "text-slate-500 hover:bg-slate-50 hover:text-[#06162B]"
+                    }`}
+                  >
+                    <p className="text-xs font-black uppercase tracking-[0.22em] text-[#168DFF]">
+                      {project.type}
+                    </p>
+                    <h3 className="mt-1 font-black">{project.short}</h3>
+
+                    {active && (
+                      <span className="absolute bottom-0 left-0 h-1 w-full bg-[#168DFF]" />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Preview + Details */}
+            <div className="grid grid-cols-[1fr_360px]">
+              <div className="h-[800px] overflow-hidden bg-white">
+                <iframe
+                  key={activeProject.url}
+                  src={activeProject.url}
+                  title={activeProject.title}
+                  className="h-full w-full border-0"
+                />
+              </div>
+
+              <aside className="border-l border-slate-200 bg-[#F8FBFF] p-8">
+                <p className="font-black uppercase tracking-[0.3em] text-[#168DFF]">
+                  Project
+                </p>
+
+                <h3 className="mt-4 text-3xl font-black">
+                  {activeProject.title}
+                </h3>
+
+                <p className="mt-5 leading-7 text-slate-600">
+                  {activeProject.description}
+                </p>
+
+                <div className="mt-8 flex flex-wrap gap-3">
+                  {activeProject.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full bg-white px-4 py-2 text-xs font-black uppercase tracking-widest text-[#168DFF] shadow-sm"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <a
+                  href="#contact"
+                  className="mt-10 inline-block w-full rounded-xl bg-[#06162B] px-6 py-4 text-center font-black text-white transition hover:bg-[#168DFF]"
+                >
+                  Build Something Similar →
+                </a>
+              </aside>
+            </div>
+          </div>
+        </div>
+
+        {/* MOBILE PROJECT CARDS */}
+        <div className="project-animate mt-14 grid gap-6 lg:hidden">
           {projects.map((project) => (
             <article
               key={project.title}
-              className="project-card group overflow-hidden rounded-[2rem] border border-white bg-white shadow-[0_25px_80px_rgba(6,22,43,0.10)] transition duration-500 hover:-translate-y-3 hover:shadow-[0_35px_100px_rgba(22,141,255,0.18)]"
+              className="rounded-[2rem] border border-white bg-white p-6 shadow-[0_25px_80px_rgba(6,22,43,0.08)]"
             >
-              <div className="relative overflow-hidden bg-[#06162B] p-6">
-                <div className="mb-5 flex items-center gap-2">
-                  <span className="h-3 w-3 rounded-full bg-red-400" />
-                  <span className="h-3 w-3 rounded-full bg-yellow-400" />
-                  <span className="h-3 w-3 rounded-full bg-green-400" />
-                </div>
+              <p className="text-sm font-black uppercase tracking-[0.25em] text-[#168DFF]">
+                {project.type}
+              </p>
 
-                <div
-                  className={`relative min-h-[260px] rounded-2xl bg-gradient-to-br ${project.gradient} p-8 text-white`}
-                >
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.35),transparent_35%)]" />
+              <h3 className="mt-3 text-2xl font-black">{project.title}</h3>
 
-                  <div className="relative z-10">
-                    <div className="mb-8 flex items-center justify-between">
-                      <span className="text-4xl text-white drop-shadow-lg">
-                        ▲
-                      </span>
-                      <span className="rounded-full bg-white/20 px-4 py-2 text-xs font-black uppercase tracking-widest backdrop-blur">
-                        {project.tag}
-                      </span>
-                    </div>
+              <p className="mt-4 leading-7 text-slate-600">
+                {project.description}
+              </p>
 
-                    <h3 className="text-3xl font-black md:text-4xl">
-                      {project.title}
-                    </h3>
-
-                    <p className="mt-4 max-w-md text-white/85">
-                      {project.text}
-                    </p>
-
-                    <div className="mt-8 grid gap-3 sm:grid-cols-3">
-                      {project.features.map((feature) => (
-                        <div
-                          key={feature}
-                          className="rounded-xl bg-white/15 px-4 py-3 text-center text-xs font-black uppercase tracking-wide backdrop-blur"
-                        >
-                          {feature}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full bg-[#EEF7FF] px-3 py-2 text-xs font-black uppercase tracking-widest text-[#168DFF]"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
 
-              <div className="p-8">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                  <div>
-                    <p className="font-black uppercase tracking-[0.25em] text-[#168DFF]">
-                      {project.tag}
-                    </p>
-                    <h3 className="mt-2 text-2xl font-black">
-                      {project.title}
-                    </h3>
-                  </div>
+              <div className="mt-6 flex flex-col gap-3">
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-xl bg-[#168DFF] px-6 py-4 text-center font-black text-white shadow-[0_18px_50px_rgba(22,141,255,0.28)]"
+                >
+                  Open Live Site →
+                </a>
 
-                  <a
-                    href="#contact"
-                    className="w-fit rounded-xl bg-[#06162B] px-5 py-3 text-sm font-black text-white transition hover:bg-[#168DFF]"
-                  >
-                    Build Similar →
-                  </a>
-                </div>
+                <a
+                  href="#contact"
+                  className="rounded-xl border-2 border-[#168DFF] px-6 py-4 text-center font-black text-[#168DFF]"
+                >
+                  Build Similar
+                </a>
               </div>
             </article>
           ))}
-        </div>
-
-        <div className="mt-16 rounded-[2rem] bg-[#06162B] p-8 text-center text-white shadow-[0_30px_90px_rgba(6,22,43,0.18)] md:p-12">
-          <p className="font-black uppercase tracking-[0.35em] text-[#168DFF]">
-            Your Business Could Be Next
-          </p>
-
-          <h3 className="mx-auto mt-4 max-w-3xl text-3xl font-black md:text-5xl">
-            Let’s build a website that makes your business look impossible to ignore.
-          </h3>
-
-          <a
-            href="#contact"
-            className="mt-8 inline-block rounded-xl bg-[#168DFF] px-8 py-4 font-black text-white shadow-[0_20px_60px_rgba(22,141,255,0.35)] transition hover:-translate-y-1 hover:bg-blue-500"
-          >
-            Start Your Project →
-          </a>
         </div>
       </div>
     </section>

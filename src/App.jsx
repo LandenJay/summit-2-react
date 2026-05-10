@@ -13,10 +13,14 @@ import Pricing from "./sections/Pricing";
 import Testimonials from "./sections/Testimonials";
 import DeviceShowcase from "./components/DeviceShowcase";
 import FAQ from "./sections/FAQ";
+import Process from "./sections/Process";
+import Onboarding from "./pages/Onboarding";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
-
+if (window.location.pathname === "/onboarding") {
+  return <Onboarding />;
+}
   if (loading) {
     return <Loader onComplete={() => setLoading(false)} />;
   }
@@ -29,6 +33,7 @@ export default function App() {
       <Hero />
       <DeviceShowcase />
       <Services />
+      <Process />
       <Projects />
       <Testimonials />
       <Pricing />
