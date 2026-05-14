@@ -15,6 +15,7 @@ import DeviceShowcase from "./components/DeviceShowcase";
 import FAQ from "./sections/FAQ";
 import Process from "./sections/Process";
 import Onboarding from "./pages/Onboarding";
+import CustomCursor from "./components/CustomCursor";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -29,6 +30,7 @@ if (window.location.pathname === "/onboarding") {
     <main className="min-h-screen bg-[#06162B] text-white">
       <SmoothScroll />
       <MouseGlow />
+      <CustomCursor />
       <Navbar />
       <Hero />
       <DeviceShowcase />

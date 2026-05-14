@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import MagneticButton from "./MagneticButton";
 
+
 export default function Hero() {
   const heroRef = useRef(null);
 
